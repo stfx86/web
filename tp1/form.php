@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+<style>
+label {
+    display: inline-block; 
+    width: 150px;         
+    vertical-align: top;  
+}
+  
+  div {
+
+    margin: 6px;
+  }
+      
+  .loisir {
+display: inline-flex;
+    
+}
+fieldset {
+display: inline-table;
+
+}
+
+
+    </style>
 </head>
 <body>
-
+<fieldset>
 <form method="post" action="affiche_parametres.php" enctype="multipart/form-data">
     
 <div>  <label > votre nom</label> 
@@ -15,7 +38,7 @@
 <input type="password" name="password" id="" required  ></div>
 
 <div>
-<label for=""> votre profession </label>
+<label > votre profession </label>
 <select name="profession[]" multiple >
 <option>architecture</option>
 <option>Agent immobilier</option>
@@ -35,7 +58,7 @@
 
 
 <div>
-<LAbel>votre sexe </LAbel>
+<LAbel>votre sex </LAbel>
 <input type="radio" name="sexe" value="F"/> F 
 <input type="radio" name="sexe" value="M"/> M 
     
@@ -55,13 +78,16 @@
 
 <label>
 Votre loisir 
+</label>
+<fieldset class="loisir">
 <input type="checkbox" name="loisir[]" value="sport" > Sport
 <input type="checkbox" name="loisir[]" value="music" >Music
 <input type="checkbox" name="loisir[]" value="internet" > Internet 
 <input type="checkbox" name="loisir[]" value="voyager" > Voyager 
 <input type="checkbox" name="loisir[]" value="lecture" >Lecture 
 <input type="checkbox" name="loisir[]" value="recherche" >Recherche
-</label>
+</fieldset>
+
 </div>
 <div>
 <label>Votr CV (en pdf) </label>
@@ -75,6 +101,13 @@ Votre loisir
 
 
 </form>
+</fieldset>
 
 </body>
 </html>
+
+
+
+
+
+
