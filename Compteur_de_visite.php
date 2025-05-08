@@ -10,7 +10,7 @@ $msg="vous etea deja venu ".$_COOKIE["compture"]."fois<br/>\n";
 
 
   $msg="je vous met un petit cokier <br/>\n";
-$valeur=1;
+  $valeur=1;
 }
 
 setcookie("compture",$valeur);
