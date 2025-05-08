@@ -22,7 +22,7 @@ function lister()
             <td>" . $row["naissance"] . "</td>
             <td>" . $row["sex"] . "</td>
             <td>" . $row["adresse"] . "</td>
-            <td>  <a href=\"\">Modifier</a> / <a href=\"supprimer.php?mat={$row["mat"]}\">Supprimer        </a>         </td>
+            <td>  <a href=\"modifier.php?mat={$row["mat"]}\">Modifier</a> / <a href=\"supprimer.php?mat={$row["mat"]}\">Supprimer        </a>         </td>
             </tr>";
     }
 };

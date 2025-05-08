@@ -11,8 +11,7 @@ $formaData = [
   "naissance" => '',
   "nom" => '',
   "prenom" => '',
-  "naissance" => '',
-  "mat" => '',
+  "mat" => 0,
   "sex" => '',
   "adresse" => ''
 ];
@@ -35,7 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       header("location: ajout_form.php?error=$error");
       break;
     }
+    
   }
+  $formaData['mat']=(int)$formaData['mat'];
 
   //
   // echo "testing formaData ";
@@ -49,8 +50,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // $bd = mysqli_connect('localhost', 'stof', 'bennasser', 'bd_tp_php') or die("connection faild");
 
   //checkig if matricul already exist 
+
   $mat = $formaData['mat'];
-  $query = "select mat ,nom ,prenom  from bd_tp_php.etudiants where mat=$mat";
+  if(!is_int($mat)){
+    $error = "Matricule must be a number not \"$mat\" ";
+    header("location: ajout_form.php?error=$error");
+    exit(1);
+
+  }
+  $query = "select mat , nom , prenom  from bd_tp_php.etudiants where mat=$mat";
 
 
 
@@ -62,20 +70,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   } else {
 
     $query = "insert into  bd_tp_php.etudiants (mat, nom, prenom, naissance, sex, adresse)
-     VALUES ( {$formaData['mat']},'{$formaData['nom']}','{$formaData['prenom']}','{$formaData['naissance']}'
-     ,'{$formaData['sex']}' ,' {$formaData['adresse']}'  )";
+     VALUES ( 
+      {$formaData['mat']} ,
+     '{$formaData['nom']}' ,
+     '{$formaData['prenom']}' ,
+     '{$formaData['naissance']}' ,
+     '{$formaData['sex']}' ,
+     '{$formaData['adresse']}'
+       )";
     echo $query . "<br><br>";
     if (mysqli_query($bd, $query)) {
 
       header("location: liste_etudiants.php");
     }
   }
-
-
-
-
-
-
 }
 
 
@@ -121,6 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+  <h1>Nouveau Etudiants </h1>
   <fieldset>
     <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
 
