@@ -1,3 +1,4 @@
 <?php
-include "form.php"
+header("location: form.php"); 
+
 ?>
