@@ -1,0 +1,53 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9ff;
+  padding: 20px;
+}
+
+form {
+  border: 1px solid orange;
+  padding: 20px;
+  background-color: #fff;
+  margin-bottom: 40px;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+label {
+  display: inline-block;
+  width: 100px;
+}
+
+input, textarea {
+  width: 300px;
+  padding: 5px;
+}
+
+input[type="file"] {
+  width: auto;
+}
+
+button {
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+.message-box {
+  border: 1px solid orange;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #fffaf0;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.message-header strong {
+  font-weight: bold;
+}

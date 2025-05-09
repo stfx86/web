@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	if (!$captcha_success->success) {
 		echo "faild to verify captcha";
-		// header("Location: inscription.php?error=captcha_faild");
-		// exit(222);
+		header("Location: inscription.php?error=captcha_faild");
+		exit(222);
 	}
 
 	extract($_POST);
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 						<td><label><b>confirme email: </b></label></td>
 						<td><input type="email" name="conf_email" size="30" /></td>
 					</tr>
-					<!-- <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div> -->
+					<div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
 
 					<tr>
 					<tr>
