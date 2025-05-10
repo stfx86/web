@@ -17,7 +17,7 @@ if(!isset($_SESSION["login"])){
 </head>
 <body>
     <span><a href="logout.php"  >deconixion</a></span>
-    <h1>Bienenu  <?=$_SESSION['login']?>  chez nexus E-Co!! </h1>
+    <h1>Bienenu  <span style="color: red;"> <?=$_SESSION['login']?> </span>  chez nexus E-Co!! </h1>
     <?php 
     if(!isset($_SESSION["panier"])){
 echo "Votre panier est vide !?";

@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 
-print_r($_POST);
+// print_r($_POST);
 
 
 
@@ -16,8 +16,10 @@ class Msg {
   public $pays;
   public $message;
   public $file;
+  public $time;
 
-  public function __construct($nom, $prenom, $email, $ville, $pays, $message, $file="") {
+  public function __construct($nom, $prenom, $email, $ville, $pays, $message, $file="",$time
+  ) {
       $this->nom = $nom;
       $this->prenom = $prenom;
       $this->email = $email;
@@ -25,6 +27,7 @@ class Msg {
       $this->pays = $pays;
       $this->message = $message;
       $this->file = $file;
+      $this->time=$time;
   }
 }
 
@@ -38,7 +41,8 @@ if ($_SERVER["REQUEST_METHOD"]==="POST") {
 
   extract($_POST);
   $file = "";
-  $msg = new Msg($nom,$prenom,$email,$ville,$pays, $message);
+  $msg = new Msg($nom,$prenom,$email,$ville,$pays, $message,"",date("d/m/y H:i:s")
+);
   // global $msgs_array;
   // global $msgs;
   if(filesize("msgs")!=0){
@@ -76,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"]==="POST") {
 </head>
 <body>
 
-<form method="post"  action="forum.php" s>
+<form method="post"  action="forum.php" >
 
     <div>
       <label for="nom">Nom</label>
@@ -119,7 +123,8 @@ if ($_SERVER["REQUEST_METHOD"]==="POST") {
   // file_get_contents("msgs");
   if(!$msgs_array=unserialize(file_get_contents("msgs")))
   die("faild to unserialize 2");
-  $now = date("d/m/y H:i:s"); // Format: day/month/year hour:minute:second
+
+ 
 foreach($msgs_array as $k){
 
 
@@ -129,7 +134,7 @@ echo "
       <div><strong>Nom & Prénom:</strong> {$k->nom}  {$k->prenom} </div>
       <div><strong>ville:</strong> {$k->ville} / {$k->pays}</div>
     </div>
-    <div><strong>Msg:</strong> ({$now})</div>
+    <div><strong>Msg:</strong> ({$k->time})</div>
     <p>{$k->message}</p>
   </div> <br>";
   // print_r($k->nom."<br><br>");
@@ -139,14 +144,14 @@ echo "
 }
  ?>
   <!-- Example messages -->
-  <div class="message-box">
+  <!-- <div class="message-box">
     <div class="message-header">
       <div><strong>Nom & Prénom:</strong> amine tester</div>
       <div><strong>ville:</strong> el jadida / maroc</div>
     </div>
     <div><strong>Msg:</strong> (24/04/19 10:37)</div>
     <p>ceci est un test</p>
-  </div>
+  </div> -->
 
 </body>
 <?php

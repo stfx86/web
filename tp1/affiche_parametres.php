@@ -8,13 +8,29 @@
 
 <body>
 
-    <table>
-        
-      <?php
+    
+    <?php
+    echo "<table>";
       affiche();
-      ?>
+    
+    echo "</table>";
+    echo "proffision:";
+    echo "<br>";
+    foreach ($_POST['profession'] as $v) {
 
-    </table>
+      echo "-" . $v . "<br>";
+  }
+
+  echo "<br>";
+  echo "loisir:";
+  echo "<br>";
+  foreach ($_POST['loisir'] as $v) {
+
+    echo "-" . $v . "<br>";
+}
+echo "<br><br>";
+
+      ?>
 
 </body>
 
@@ -89,10 +105,7 @@ function affiche()
 
 
 
-foreach ($_POST['profession'] as $v) {
 
-    echo ":" . $v . "<br>";
-}
 echo "<a href=\"./form.php\">home</a>";
 
 echo "<br>";
